@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.4/dist/full.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { margin: 0; padding: 20px; }
+        /* Código gerado automaticamente pela IA do AppBeast */
+    </style>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoodFlow — Diário Emocional Inteligente</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* Custom tweaks */
+        .page { display: none; padding: 2rem; }
+        .page.active { display: block; }
+        .mood-pill { width: 48px; height: 48px; display: inline-flex; align-items:center; justify-content:center; border-radius:999px; cursor:pointer; transition: transform .18s ease; }
+        .mood-pill:hover { transform: scale(1.08); }
+        .emotion-chip { cursor:pointer; transition: transform .18s ease; }
+        .card-hover { transition: transform .25s ease, box-shadow .25s ease; }
+        .card-hover:hover { transform: scale(1.05); box-shadow: 0 12px 30px rgba(2,6,23,0.12); }
+        .hero-illustration { transform: rotate(-6deg); }
+        .calendar-day { aspect-ratio: 1/1; display:flex; align-items:center; justify-content:center; border-radius:8px; cursor:pointer; }
+        .fade-in { animation: fadeIn .45s ease both; }
+        @keyframes fadeIn { from {opacity:0; transform: translateY(8px)} to {opacity:1; transform: translateY(0)} }
+        .no-select { user-select: none; -webkit-user-select: none; -moz-user-select: none; }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-base-100 to-base-200 min-h-screen">
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-50 bg-opacity-60 backdrop-blur-md">
+        <nav class="max-w-6xl mx-auto px-4 md:px-8 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <a href="#home" class="flex items-center gap-2">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-r from-accent to-primary flex items-center justify-center text-white shadow-lg">
+                        <i class="fa-solid fa-water"></i>
+                    </div>
+                    <div class="hidden sm:block">
+                        <h1 class="text-lg font-bold text-primary">MoodFlow</h1>
+                        <p class="text-xs text-neutral">Seu diário emocional inteligente</p>
+                    </div>
+                </a>
+            </div>
+            <div class="hidden md:flex items-center gap-4">
+                <a href="#features" class="btn btn-ghost btn-sm">Recursos</a>
+                <a href="#journal" class="btn btn-ghost btn-sm">Registro</a>
+                <a href="#calendar" class="btn btn-ghost btn-sm">Calendário</a>
+                <a href="#insights" class="btn btn-ghost btn-sm">Insights</a>
+            </div>
+            <div class="flex items-center gap-2">
+                <div id="auth-area" class="flex items-center gap-2">
+                    <button id="btn-login" class="btn btn-outline btn-sm">Entrar</button>
+                    <button id="btn-signup" class="btn btn-primary btn-sm">Criar conta</button>
+                </div>
+                <div id="profile-area" class="hidden items-center gap-2">
+                    <div id="profile-menu" class="dropdown dropdown-end">
+                        <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+                            <div class="w-10 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center text-white">
+                                <span id="profile-initials">U</span>
+                            </div>
+                        </label>
+                        <ul tabindex="0" class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
+                            <li><a href="#profile" class="justify-between">Perfil <span class="badge">Você</span></a></li>
+                            <li><a href="#settings">Configurações</a></li>
+                            <li><a id="btn-logout" class="text-error">Sair</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <button id="theme-toggle" class="btn btn-ghost btn-square tooltip tooltip-left" data-tip="Alternar tema">
+                    <i class="fa-solid fa-sun"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="max-w-6xl mx-auto">
+        <!-- HOME / HERO -->
+        <section id="home" class="page active" data-page="home">
+            <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-6 px-4 md:px-8">
+                <div class="py-8">
+                    <div class="bg-gradient-to-r from-primary to-secondary text-white inline-block px-3 py-1 rounded-full text-xs mb-4">Novo • 100% Gratuito</div>
+                    <h2 class="text-4xl md:text-6xl font-bold leading-tight text-primary">MoodFlow</h2>
+                    <p class="mt-4 text-neutral text-lg md:text-xl max-w-xl">Transforme seus sentimentos em insights visuais. Registre seu humor, entenda gatilhos e cresça emocionalmente — sem pagar nada.</p>
+                    <div class="mt-6 flex gap-3">
+                        <a id="cta-main" href="#signup" class="btn btn-primary btn-lg shadow-lg">Começar agora</a>
+                        <a href="#features" class="btn btn-ghost btn-lg">Explorar recursos <i class="fa-solid fa-arrow-right ml-2"></i></a>
+                    </div>
+
+                    <div class="mt-8 grid grid-cols-2 gap-3 md:gap-4">
+                        <div class="p-4 rounded-lg bg-base-100 shadow card-hover">
+                            <div class="flex items-center gap-3">
+                                <div class="badge badge-primary">Check-ins</div>
+                                <div class="text-sm text-neutral">Registro rápido em 3 passos</div>
+                            </div>
+                        </div>
+                        <div class="p-4 rounded-lg bg-base-100 shadow card-hover">
+                            <div class="flex items-center gap-3">
+                                <div class="badge badge-secondary">Insights</div>
+                                <div class="text-sm text-neutral">Relatórios mensais automáticos</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 flex gap-4 items-center">
+                        <div class="flex items-center gap-3">
+                            <div class="text-3xl">🌱</div>
+                            <div>
+                                <div class="text-sm text-neutral">Jardim emocional</div>
+                                <div class="text-xs text-success">Cresça com registros</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative px-4">
+                    <div class="bg-gradient-to-r from-accent to-primary rounded-3xl p-6 shadow-2xl text-white hero-illustration">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <div class="text-sm opacity-90">Bem-vindo ao seu diário</div>
+                                <h3 class="text-2xl md:text-3xl font-bold mt-2">Como você está hoje?</h3>
+                            </div>
+                            <div class="text-4xl opacity-90"><i class="fa-solid fa-face-smile-beam"></i></div>
+                        </div>
+
+                        <div class="mt-6 grid grid-cols-5 gap-3">
+                            <div class="text-center">
+                                <div class="mood-pill bg-emerald-500 text-white no-select"><i class="fa-solid fa-face-laugh"></i></div>
+                                <div class="text-xs mt-2">Ótimo</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="mood-pill bg-blue-500 text-white no-select"><i class="fa-solid fa-face-smile"></i></div>
+                                <div class="text-xs mt-2">Bom</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="mood-pill bg-yellow-400 text-white no-select"><i class="fa-solid fa-face-meh"></i></div>
+                                <div class="text-xs mt-2">Neutro</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="mood-pill bg-orange-500 text-white no-select"><i class="fa-solid fa-face-frown"></i></div>
+                                <div class="text-xs mt-2">Ruim</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="mood-pill bg-red-500 text-white no-select"><i class="fa-solid fa-face-angry"></i></div>
+                                <div class="text-xs mt-2">Péssimo</div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 bg-white bg-opacity-10 p-3 rounded-xl">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <div class="text-xs opacity-80">Roda de emoções</div>
+                                    <div class="text-sm">Selecione sentimentos específicos</div>
+                                </div>
+                                <div><i class="fa-solid fa-spinner fa-spin-pulse"></i></div>
+                            </div>
+                            <div class="mt-3 grid grid-cols-3 gap-2">
+                                <button class="btn btn-ghost btn-sm emotion-chip">Alegria</button>
+                                <button class="btn btn-ghost btn-sm emotion-chip">Ansiedade</button>
+                                <button class="btn btn-ghost btn-sm emotion-chip">Gratidão</button>
+                                <button class="btn btn-ghost btn-sm emotion-chip">Frustração</button>
+                                <button class="btn btn-ghost btn-sm emotion-chip">Calma</button>
+                                <button class="btn btn-ghost btn-sm emotion-chip">Tristeza</button>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 flex items-center justify-between">
+                            <div>
+                                <div class="text-xs opacity-80">Intensidade</div>
+                                <input id="hero-range" type="range" min="1" max="10" value="5" class="range range-primary range-sm w-48">
+                            </div>
+                            <div>
+                                <a href="#signup" class="btn btn-accent">Criar conta grátis</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 text-sm text-neutral">Use MoodFlow em qualquer dispositivo — offline e com privacidade total.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURES -->
+        <section id="features" class="page" data-page="features">
+            <div class="px-4 md:px-8 py-8">
+                <div class="flex items-center justify-between mb-6">
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-bold text-primary">Recursos projetados para seu bem-estar</h2>
+                        <p class="text-neutral mt-1">Ferramentas visuais e análises inteligentes para acompanhar sua jornada emocional.</p>
+                    </div>
+                    <div class="hidden md:block">
+                        <span class="badge badge-outline">Mobile-first • Acessível • Privado</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="p-5 bg-base-100 rounded-xl card-hover">
+                        <div class="flex items-center gap-3">
+                            <div class="text-3xl text-primary"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                            <div>
+                                <h3 class="font-bold">Registro Rápido</h3>
+                                <p class="text-sm text-neutral">Check-in em segundos com múltiplos registros por dia.</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 flex items-center gap-2">
+                            <div class="badge badge-primary">5 níveis</div>
+                            <div class="badge badge-secondary">Slider 1-10</div>
+                        </div>
+                    </div>
+
+                    <div class="p-5 bg-base-100 rounded-xl card-hover">
+                        <div class="flex items-center gap-3">
+                            <div class="text-3xl text-secondary"><i class="fa-solid fa-calendar-days"></i></div>
+                            <div>
+                                <h3 class="font-bold">Calendário Interativo</h3>
+                                <p class="text-sm text-neutral">Visão mensal, semanal e anual com mapa de calor.</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 flex items-center gap-2">
+                            <div class="badge badge-accent">Filtro por emoção</div>
+                        </div>
+                    </div>
+
+                    <div class="p-5 bg-base-100 rounded-xl card-hover">
+                        <div class="flex items-center gap-3">
+                            <div class="text-3xl text-accent"><i class="fa-solid fa-chart-line"></i></div>
+                            <div>
+                                <h3 class="font-bold">Dashboard de Insights</h3>
+                                <p class="text-sm text-neutral">Tendências, padrões semanais e gatilhos automáticos.</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 flex items-center gap-2">
+                            <div class="badge badge-success">Relatórios mensais</div>
+                        </div>
+                    </div>
+
+                    <div class="p-5 bg-base-100 rounded-xl card-hover">
+                        <div class="flex items-center gap-3">
+                            <div class="text-3xl text-success"><i class="fa-solid fa-hand-holding-heart"></i></div>
+                            <div>
+                                <h3 class="font-bold">Recursos de Bem-estar</h3>
+                                <p class="text-sm text-neutral">Exercícios de respiração, banco de gratidão e desafios positivos.</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 flex items-center gap-2">
+                            <div class="badge badge-primary">Offline</div>
+                            <div class="badge badge-secondary">Privacidade</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRICING (FREE EMPHASIS) -->
+        <section id="pricing" class="page" data-page="pricing">
+            <div class="px-4 md:px-8 py-8">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl md:text-4xl font-bold text-primary">Preço</h2>
+                    <p class="text-neutral mt-2">MoodFlow é e sempre será gratuito — sem assinaturas, sem muros de pagamento.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="p-6 rounded-xl bg-base-100 shadow card-hover">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="text-xl font-bold">Grátis</h3>
+                                <p class="text-sm text-neutral">Tudo que você precisa para iniciar seu diário emocional.</p>
+                            </div>
+                            <div class="badge badge-success">100% FREE</div>
+                        </div>
+
+                        <ul class="mt-4 space-y-2 text-sm">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-success"></i> Check-ins ilimitados</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-success"></i> Exportar dados</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-success"></i> Funciona offline</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-success"></i> Privacidade local</li>
+                        </ul>
+
+                        <div class="mt-6">
+                            <a href="#signup" class="btn btn-primary w-full">Começar gratuitamente</a>
+                        </div>
+                    </div>
+
+                    <div class="p-6 rounded-xl bg-base-100 shadow opacity-70">
+                        <div class="text-xs text-neutral">Nada aqui — sem planos pagos</div>
+                        <div class="mt-6 h-36 flex items-center justify-center">
+                            <i class="fa-solid fa-ban text-3xl opacity-40"></i>
+                        </div>
+                    </div>
+
+                    <div class="p-6 rounded-xl bg-base-100 shadow opacity-70">
+                        <div class="text-xs text-neutral">Sem cobranças futuras</div>
+                        <div class="mt-6 h-36 flex items-center justify-center">
+                            <i class="fa-solid fa-handshake text-3xl opacity-40"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SIGNUP -->
+        <section id="signup" class="page" data-page="signup">
+            <div class="px-4 md:px-8 py-8 max-w-3xl mx-auto">
+                <div class="card bg-base-100 shadow-2xl rounded-xl p-6">
+                    <h2 class="text-2xl font-bold text-primary">Criar Conta</h2>
+                    <p class="text-sm text-neutral mt-1">Rápido, gratuito e privado. Use sem criar conta se preferir (dados locais).</p>
+
+                    <form id="form-signup" class="mt-6 grid grid-cols-1 gap-4">
+                        <div class="form-control">
+                            <label class="label"><span class="label-text">Nome</span></label>
+                            <input id="signup-name" type="text" required placeholder="Seu nome" class="input input-bordered focus:input-primary w-full" />
+                        </div>
+                        <div class="form-control">
+                            <label class="label"><span class="label-text">E-mail</span></label>
+                            <input id="signup-email" type="email" required placeholder="seu@email.com" class="input input-bordered focus:input-primary w-full" />
+                        </div>
+                        <div class="form-control">
+                            <label class="label"><span class="label-text">Senha</span></label>
+                            <input id="signup-password" type="password" required placeholder="Mínimo 6 caracteres" class="input input-bordered focus:input-primary w-full" />
+                        </div>
+
+                        <div class="flex items-center gap-3">
+                            <button type="submit" class="btn btn-primary">Criar conta</button>
+                            <a href="#login" class="btn btn-ghost">Já tenho conta</a>
+                        </div>
+                        <div id="signup-msg" class="text-sm text-error"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- LOGIN -->
+        <section id="login" class="page" data-page="login">
+            <div class="px-4 md:px-8 py-8 max-w-3xl mx-auto">
+                <div class="card bg-base-100 shadow-2xl rounded-xl p-6">
+                    <h2 class="text-2xl font-bold text-primary">Entrar</h2>
+                    <p class="text-sm text-neutral mt-1">Acesse suas entradas e insights pessoais.</p>
+
+                    <form id="form-login" class="mt-6 grid grid-cols-1 gap-4">
+                        <div class="form-control">
+                            <label class="label"><span class="label-text">E-mail</span></label>
+                            <input id="login-email" type="email" required placeholder="E-mail" class="input input-bordered focus:input-primary w-full" />
+                        </div>
+                        <div class="form-control">
+                            <label class="label"><span class="label-text">Senha</span></label>
+                            <input id="login-password" type="password" required placeholder="Senha" class="input input-bordered focus:input-primary w-full" />
+                        </div>
+
+                        <div class="flex items-center gap-3">
+                            <button type="submit" class="btn btn-primary">Entrar</button>
+                            <a href="#signup" class="btn btn-ghost">Criar conta</a>
+                        </div>
+                        <div id="login-msg" class="text-sm text-error"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- JOURNAL / Protected -->
+        <section id="journal" class="page" data-page="journal">
+            <div class="px-4 md:px-8 py-8">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-2xl md:text-3xl font-bold text-primary">Registro Diário</h2>
+                    <div>
+                        <button id="quick-check-in" class="btn btn-outline btn-sm">Check-in rápido</button>
+                        <a href="#journal" class="btn btn-ghost btn-sm">Atualizar</a>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Form -->
+                    <div class="md:col-span-1 p-4 bg-base-100 rounded-xl shadow">
+                        <h3 class="font-semibold">Novo registro</h3>
+                        <p class="text-xs text-neutral">Selecione humor, emoções e intensidade.</p>
+
+                        <div class="mt-4">
+                            <label class="label"><span class="label-text">Humor</span></label>
+                            <div id="mood-select" class="flex items-center gap-2">
+                                <button data-mood="5" class="btn btn-ghost mood-option" title="Ótimo"><i class="fa-solid fa-face-laugh text-2xl"></i></button>
+                                <button data-mood="4" class="btn btn-ghost mood-option" title="Bom"><i class="fa-solid fa-face-smile text-2xl"></i></button>
+                                <button data-mood="3" class="btn btn-ghost mood-option" title="Neutro"><i class="fa-solid fa-face-meh text-2xl"></i></button>
+                                <button data-mood="2" class="btn btn-ghost mood-option" title="Ruim"><i class="fa-solid fa-face-frown text-2xl"></i></button>
+                                <button data-mood="1" class="btn btn-ghost mood-option" title="Péssimo"><i class="fa-solid fa-face-angry text-2xl"></i></button>
+                            </div>
+
+                            <label class="label mt-3"><span class="label-text">Emoções (toque para adicionar)</span></label>
+                            <div id="emotions-list" class="flex flex-wrap gap-2">
+                                <button class="btn btn-sm btn-outline emotion-item">Alegria</button>
+                                <button class="btn btn-sm btn-outline emotion-item">Ansiedade</button>
+                                <button class="btn btn-sm btn-outline emotion-item">Gratidão</button>
+                                <button class="btn btn-sm btn-outline emotion-item">Frustração</button>
+                                <button class="btn btn-sm btn-outline emotion-item">Calma</button>
+                                <button class="btn btn-sm btn-outline emotion-item">Tristeza</button>
+                            </div>
+
+                            <label class="label mt-3"><span class="label-text">Intensidade</span></label>
+                            <input id="entry-intensity" type="range" min="1" max="10" value="5" class="range range-primary w-full" />
+
+                            <label class="label mt-3"><span class="label-text">Notas</span></label>
+                            <textarea id="entry-notes" class="textarea textarea-bordered h-24" placeholder="Escreva suas reflexões..."></textarea>
+
+                            <div class="mt-4 flex gap-2">
+                                <button id="save-entry" class="btn btn-primary">Salvar registro</button>
+                                <button id="clear-entry" class="btn btn-ghost">Limpar</button>
+                            </div>
+                            <div id="entry-msg" class="text-sm mt-2"></div>
+                        </div>
+                    </div>
+
+                    <!-- Preview / Stats -->
+                    <div class="md:col-span-2 p-4 bg-base-100 rounded-xl shadow">
+                        <div class="flex items-center justify-between">
+                            <h3 class="font-semibold">Entradas Recentes</h3>
+                            <div class="text-sm text-neutral">Toque em um item para editar ou excluir</div>
+                        </div>
+
+                        <div id="entries-feed" class="mt-4 grid gap-3">
+                            <!-- entries appear here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CALENDAR -->
+        <section id="calendar" class="page" data-page="calendar">
+            <div class="px-4 md:px-8 py-8">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-2xl md:text-3xl font-bold text-primary">Calendário</h2>
+                    <div class="flex items-center gap-2">
+                        <button id="prev-month" class="btn btn-ghost btn-sm"><i class="fa-solid fa-chevron-left"></i></button>
+                        <div id="month-label" class="text-sm font-semibold"></div>
+                        <button id="next-month" class="btn btn-ghost btn-sm"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-7 gap-3 text-center text-xs text-neutral mb-3 px-2">
+                    <div>Dom</div><div>Seg</div><div>Ter</div><div>Qua</div><div>Qui</div><div>Sex</div><div>Sáb</div>
+                </div>
+
+                <div id="calendar-grid" class="grid grid-cols-7 gap-3 px-2">
+                    <!-- calendar populated by JS -->
+                </div>
+
+                <div class="mt-6">
+                    <div class="text-sm text-neutral">Filtro rápido:</div>
+                    <div class="flex items-center gap-2 mt-2">
+                        <button class="btn btn-xs btn-ghost filter-btn" data-filter="all">Todos</button>
+                        <button class="btn btn-xs btn-ghost filter-btn" data-filter="alegria">Alegria</button>
+                        <button class="btn btn-xs btn-ghost filter-btn" data-filter="ansiedade">Ansiedade</button>
+                        <button class="btn btn-xs btn-ghost filter-btn" data-filter="tristeza">Tristeza</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- INSIGHTS -->
+        <section id="insights" class="page" data-page="insights">
+            <div class="px-4 md:px-8 py-8">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+                    <div>
+                        <h2 class="text-2xl md:text-3xl font-bold text-primary">Insights</h2>
+                        <p class="text-sm text-neutral mt-1">Tendências e padrões baseados nos seus registros.</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="stats stats-vertical lg:stats-horizontal shadow">
+                            <div class="stat">
+                                <div class="stat-title">Registro diário</div>
+                                <div id="stat-average" class="stat-value text-primary">—</div>
+                                <div class="stat-desc">Média do último mês</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-title">Emoção mais comum</div>
+                                <div id="stat-common" class="stat-value text-secondary">—</div>
+                                <div class="stat-desc">Frequência</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="p-4 bg-base-100 rounded-xl shadow">
+                        <h3 class="font-semibold">Gráfico de Tendência</h3>
+                        <div class="mt-4">
+                            <svg id="sparkline" width="100%" height="120" viewBox="0 0 300 120"></svg>
+                        </div>
+                    </div>
+
+                    <div class="p-4 bg-base-100 rounded-xl shadow">
+                        <h3 class="font-semibold">Padrões Semanais</h3>
+                        <ul id="weekly-patterns" class="mt-4 space-y-2 text-sm text-neutral">
+                            <!-- list -->
+                        </ul>
+                    </div>
+
+                    <div class="p-4 bg-base-100 rounded-xl shadow">
+                        <h3 class="font-semibold">Gatilhos Frequentes</h3>
+                        <div id="triggers" class="mt-4 flex flex-col gap-2">
+                            <!-- triggers -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROFILE -->
+        <section id="profile" class="page" data-page="profile">
+            <div class="px-4 md:px-8 py-8 max-w-4xl mx-auto">
+                <div class="p-6 bg-base-100 rounded-xl shadow flex flex-col md:flex-row gap-6">
+                    <div class="w-full md:w-1/3 flex flex-col items-center">
+                        <div class="avatar">
+                            <div id="profile-avatar" class="w-32 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center text-white text-3xl">
+                                U
+                            </div>
+                        </div>
+                        <h3 id="profile-name" class="mt-4 text-xl font-bold">Usuário</h3>
+                        <p id="profile-email" class="text-sm text-neutral">email@exemplo.com</p>
+                        <div class="mt-4 flex gap-2">
+                            <button id="export-data" class="btn btn-outline btn-sm">Exportar JSON</button>
+                            <button id="delete-data" class="btn btn-error btn-sm">Apagar dados</button>
+                        </div>
+                    </div>
+
+                    <div class="w-full md:w-2/3">
+                        <h4 class="font-semibold">Preferências</h4>
+                        <div class="mt-3 grid grid-cols-1 gap-3">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <div class="font-medium">Tema</div>
+                                    <div class="text-sm text-neutral">Claro / Escuro</div>
+                                </div>
+                                <div>
+                                    <label class="swap swap-rotate">
+                                        <input id="profile-theme" type="checkbox" />
+                                        <div class="swap-on btn btn-primary btn-sm">Escuro</div>
+                                        <div class="swap-off btn btn-ghost btn-sm">Claro</div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <div class="font-medium">Privacidade</div>
+                                    <div class="text-sm text-neutral">Dados armazenados localmente</div>
+                                </div>
+                                <div>
+                                    <div class="badge badge-outline">Local</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6">
+                            <h4 class="font-semibold">Sobre</h4>
+                            <p class="text-sm text-neutral mt-2">MoodFlow mantém seu foco na privacidade, usabilidade e acesso gratuito. Sem assinaturas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="mt-12 border-t pt-6">
+        <div class="max-w-6xl mx-auto px-4 md:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-primary to-secondary flex items-center justify-center text-white">
+                            <i class="fa-solid fa-water"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">MoodFlow</h4>
+                            <div class="text-xs text-neutral">Diário Emocional Inteligente</div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h5 class="font-semibold">Links</h5>
+                    <ul class="mt-2 space-y-2 text-sm">
+                        <li><a href="#features" class="link link-hover">Recursos</a></li>
+                        <li><a href="#journal" class="link link-hover">Registro</a></li>
+                        <li><a href="#insights" class="link link-hover">Insights</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-semibold">Siga-nos</h5>
+                    <div class="flex items-center gap-3 mt-2">
+                        <a class="btn btn-ghost btn-sm" href="#" aria-label="twitter"><i class="fa-brands fa-twitter"></i></a>
+                        <a class="btn btn-ghost btn-sm" href="#" aria-label="instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a class="btn btn-ghost btn-sm" href="#" aria-label="github"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 text-center text-sm text-neutral">
+                <div>&copy; <span id="year"></span> MoodFlow — Todos os direitos reservados • Gratuito</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODALS / DIALOGS (hidden prototypes) -->
+    <dialog id="login-required" class="modal">
+        <form method="dialog" class="modal-box">
+            <h3 class="font-bold text-lg">Login necessário</h3>
+            <p class="py-4">É preciso entrar para acessar esta funcionalidade. Deseja entrar agora?</p>
+            <div class="modal-action">
+                <a href="#login" class="btn">Entrar</a>
+                <button class="btn btn-ghost">Fechar</button>
+            </div>
+        </form>
+    </dialog>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Simple SPA + Auth (localStorage)
+        (function () {
+            const pages = document.querySelectorAll('.page');
+            const authArea = document.getElementById('auth-area');
+            const profileArea = document.getElementById('profile-area');
+            const profileInitials = document.getElementById('profile-initials');
+            const profileAvatar = document.getElementById('profile-avatar');
+            const profileNameLabel = document.getElementById('profile-name');
+            const profileEmailLabel = document.getElementById('profile-email');
+            const yearEl = document.getElementById('year');
+            yearEl.textContent = new Date().getFullYear();
+
+            function showPage(name) {
+                pages.forEach(p => p.classList.remove('active'));
+                const page = document.querySelector(`[data-page="${name}"]`);
+                if (page) page.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            function route() {
+                const hash = location.hash.replace('#', '') || 'home';
+                const protectedPages = ['journal','calendar','insights','profile'];
+                if (protectedPages.includes(hash) && !getCurrentUser()) {
+                    // show landing or login prompt
+                    showPage('login');
+                    document.getElementById('login-msg').textContent = 'Faça login para acessar essa página.';
+                } else {
+                    showPage(hash);
+                }
+                // populate dynamic content on route
+                if (hash === 'journal') renderEntries();
+                if (hash === 'calendar') renderCalendar();
+                if (hash === 'insights') renderInsights();
+                if (hash === 'profile') populateProfile();
+            }
+
+            window.addEventListener('hashchange', route);
+            window.addEventListener('load', () => {
+                checkAuthUI();
+                route();
+            });
+
+            // Theme toggle
+            const themeToggle = document.getElementById('theme-toggle');
+            themeToggle.addEventListener('click', () => {
+                const html = document.documentElement;
+                html.setAttribute('data-theme', html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+            });
+
+            // Simple local users management
+            function getUsers() { return JSON.parse(localStorage.getItem('moodflow_users') || '[]'); }
+            function saveUsers(u){ localStorage.setItem('moodflow_users', JSON.stringify(u)); }
+            function getCurrentUser() { return JSON.parse(localStorage.getItem('moodflow_current') || 'null'); }
+            function setCurrentUser(user) { localStorage.setItem('moodflow_current', JSON.stringify(user)); checkAuthUI(); }
+
+            function checkAuthUI() {
+                const user = getCurrentUser();
+                if (user) {
+                    authArea.classList.add('hidden');
+                    profileArea.classList.remove('hidden');
+                    profileInitials.textContent = (user.name || 'U').slice(0,1).toUpperCase();
+                    document.getElementById('profile-name').textContent = user.name || 'Usuário';
+                    document.getElementById('profile-email').textContent = user.email || '';
+                    profileAvatar.textContent = (user.name || 'U').slice(0,1).toUpperCase();
+                } else {
+                    authArea.classList.remove('hidden');
+                    profileArea.classList.add('hidden');
+                }
+            }
+
+            // Signup
+            const formSignup = document.getElementById('form-signup');
+            formSignup.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('signup-name').value.trim();
+                const email = document.getElementById('signup-email').value.trim().toLowerCase();
+                const password = document.getElementById('signup-password').value;
+                const msg = document.getElementById('signup-msg');
+                msg.textContent = '';
+                if (password.length < 6) { msg.textContent = 'Senha precisa ter ao menos 6 caracteres.'; return; }
+                const users = getUsers();
+                if (users.find(u => u.email === email)) { msg.textContent = 'E-mail já cadastrado.'; return; }
+                const user = { id: Date.now(), name, email, password };
+                users.push(user);
+                saveUsers(users);
+                setCurrentUser({ id: user.id, name: user.name, email: user.email });
+                location.hash = '#journal';
+            });
+
+            // Login
+            const formLogin = document.getElementById('form-login');
+            formLogin.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = document.getElementById('login-email').value.trim().toLowerCase();
+                const password = document.getElementById('login-password').value;
+                const msg = document.getElementById('login-msg');
+                msg.textContent = '';
+                const users = getUsers();
+                const user = users.find(u => u.email === email && u.password === password);
+                if (!user) { msg.textContent = 'Credenciais inválidas.'; return; }
+                setCurrentUser({ id: user.id, name: user.name, email: user.email });
+                location.hash = '#journal';
+            });
+
+            // Quick nav for buttons
+            document.getElementById('btn-login').addEventListener('click', () => location.hash = '#login');
+            document.getElementById('btn-signup').addEventListener('click', () => location.hash = '#signup');
+            document.getElementById('btn-logout').addEventListener('click', () => { localStorage.removeItem('moodflow_current'); checkAuthUI(); location.hash = '#home'; });
+
+            // Save entry functions
+            function getEntriesForUser(userId) {
+                return JSON.parse(localStorage.getItem('moodflow_entries_' + userId) || '[]');
+            }
+            function saveEntriesForUser(userId, entries) {
+                localStorage.setItem('moodflow_entries_' + userId, JSON.stringify(entries));
+            }
+
+            const moodOptions = document.querySelectorAll('.mood-option');
+            let selectedMood = null;
+            moodOptions.forEach(btn => btn.addEventListener('click', () => {
+                moodOptions.forEach(b => b.classList.remove('btn-active'));
+                btn.classList.add('btn-active');
+                selectedMood = parseInt(btn.dataset.mood);
+            }));
+
+            // emotion select toggles
+            document.querySelectorAll('.emotion-item').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    btn.classList.toggle('btn-primary');
+                    btn.classList.toggle('btn-outline');
+                });
+            });
+
+            document.getElementById('clear-entry').addEventListener('click', () => {
+                clearEntryForm();
+            });
+
+            function clearEntryForm() {
+                selectedMood = null;
+                moodOptions.forEach(b => b.classList.remove('btn-active'));
+                document.getElementById('entry-notes').value = '';
+                document.getElementById('entry-intensity').value = 5;
+                document.querySelectorAll('.emotion-item').forEach(b => { b.classList.remove('btn-primary'); b.classList.add('btn-outline'); });
+                document.getElementById('entry-msg').textContent = '';
+            }
+
+            document.getElementById('save-entry').addEventListener('click', (e) => {
+                const user = getCurrentUser();
+                if (!user) { openLoginRequired(); return; }
+                const mood = selectedMood || 3;
+                const intensity = parseInt(document.getElementById('entry-intensity').value);
+                const notes = document.getElementById('entry-notes').value.trim();
+                const emotions = Array.from(document.querySelectorAll('.emotion-item.btn-primary')).map(b => b.textContent.trim().toLowerCase());
+                const entry = { id: Date.now(), date: new Date().toISOString(), mood, intensity, notes, emotions };
+                const entries = getEntriesForUser(user.id);
+                entries.unshift(entry);
+                saveEntriesForUser(user.id, entries);
+                document.getElementById('entry-msg').textContent = 'Registro salvo!';
+                clearEntryForm();
+                renderEntries();
+            });
+
+            function renderEntries() {
+                const feed = document.getElementById('entries-feed');
+                const user = getCurrentUser();
+                feed.innerHTML = '';
+                if (!user) { feed.innerHTML = '<div class="text-sm text-neutral">Faça login para ver seus registros.</div>'; return; }
+                const entries = getEntriesForUser(user.id);
+                if (!entries.length) {
+                    feed.innerHTML = '<div class="text-sm text-neutral">Nenhum registro ainda. Comece agora!</div>';
+                    return;
+                }
+                entries.slice(0, 12).forEach(entry => {
+                    const moodEmoji = moodToEmoji(entry.mood);
+                    const el = document.createElement('div');
+                    el.className = 'p-3 bg-base-200 rounded-lg flex items-start gap-3';
+                    el.innerHTML = `
+                        <div class="flex flex-col items-center">
+                            <div class="w-12 h-12 rounded-lg bg-white flex items-center justify-center text-2xl">${moodEmoji}</div>
+                            <div class="text-xs opacity-70 mt-2">${new Date(entry.date).toLocaleString()}</div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between">
+                                <div class="font-semibold">Intensidade: ${entry.intensity}</div>
+                                <div class="text-xs text-neutral">${entry.emotions.join(', ') || 'Sem emoções'}</div>
+                            </div>
+                            <div class="text-sm text-neutral mt-2">${escapeHtml(entry.notes || '')}</div>
+                            <div class="mt-3 flex gap-2">
+                                <button class="btn btn-xs btn-ghost edit-entry" data-id="${entry.id}">Editar</button>
+                                <button class="btn btn-xs btn-error delete-entry" data-id="${entry.id}">Excluir</button>
+                            </div>
+                        </div>
+                    `;
+                    feed.appendChild(el);
+                });
+
+                // edit / delete handlers
+                document.querySelectorAll('.delete-entry').forEach(btn => btn.addEventListener('click', (e) => {
+                    const id = parseInt(btn.dataset.id);
+                    if (!confirm('Excluir este registro?')) return;
+                    const user = getCurrentUser();
+                    let entries = getEntriesForUser(user.id);
+                    entries = entries.filter(x => x.id !== id);
+                    saveEntriesForUser(user.id, entries);
+                    renderEntries();
+                }));
+
+                document.querySelectorAll('.edit-entry').forEach(btn => btn.addEventListener('click', (e) => {
+                    const id = parseInt(btn.dataset.id);
+                    const user = getCurrentUser();
+                    let entries = getEntriesForUser(user.id);
+                    const entry = entries.find(x => x.id === id);
+                    if (!entry) return;
+                    // prefill form
+                    moodOptions.forEach(b => b.classList.remove('btn-active'));
+                    const matching = Array.from(moodOptions).find(b => parseInt(b.dataset.mood) === entry.mood);
+                    if (matching) matching.classList.add('btn-active');
+                    selectedMood = entry.mood;
+                    document.getElementById('entry-intensity').value = entry.intensity;
+                    document.getElementById('entry-notes').value = entry.notes;
+                    document.querySelectorAll('.emotion-item').forEach(b => {
+                        if (entry.emotions.includes(b.textContent.trim().toLowerCase())) {
+                            b.classList.add('btn-primary'); b.classList.remove('btn-outline');
+                        } else {
+                            b.classList.remove('btn-primary'); b.classList.add('btn-outline');
+                        }
+                    });
+                    // after editing, delete old and let user save as new
+                    if (confirm('Carregado para edição. Deseja remover a versão antiga?')) {
+                        entries = entries.filter(x => x.id !== id);
+                        saveEntriesForUser(user.id, entries);
+                        renderEntries();
+                    }
+                    location.hash = '#journal';
+                }));
+            }
+
+            function moodToEmoji(mood) {
+                switch(mood) {
+                    case 5: return '😁';
+                    case 4: return '😊';
+                    case 3: return '😐';
+                    case 2: return '☹️';
+                    case 1: return '😠';
+                    default: return '🙂';
+                }
+            }
+
+            function escapeHtml(text) {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            }
+
+            // Calendar rendering
+            let calendarDate = new Date();
+            function renderCalendar() {
+                const user = getCurrentUser();
+                const grid = document.getElementById('calendar-grid');
+                grid.innerHTML = '';
+                const monthLabel = document.getElementById('month-label');
+                const year = calendarDate.getFullYear();
+                const month = calendarDate.getMonth();
+                monthLabel.textContent = calendarDate.toLocaleString('pt-BR', { month: 'long', year: 'numeric' });
+                const firstDay = new Date(year, month, 1).getDay();
+                const daysInMonth = new Date(year, month + 1, 0).getDate();
+                const entries = user ? getEntriesForUser(user.id) : [];
+                for (let i = 0; i < firstDay; i++) {
+                    const empty = document.createElement('div');
+                    empty.className = 'calendar-day';
+                    grid.appendChild(empty);
+                }
+                for (let d = 1; d <= daysInMonth; d++) {
+                    const day = new Date(year, month, d);
+                    const dayEntries = entries.filter(en => new Date(en.date).toDateString() === day.toDateString());
+                    const dominant = dayEntries.length ? Math.round(dayEntries.reduce((s, e) => s + e.mood, 0) / dayEntries.length) : 0;
+                    const el = document.createElement('div');
+                    el.className = 'calendar-day rounded-lg p-2';
+                    if (dominant >= 4) el.classList.add('bg-emerald-200');
+                    else if (dominant === 3) el.classList.add('bg-yellow-100');
+                    else if (dominant > 0) el.classList.add('bg-orange-200');
+                    else el.classList.add('bg-base-200');
+                    el.innerHTML = `<div class="w-full h-full flex flex-col items-center justify-center">
+                        <div class="text-sm font-semibold">${d}</div>
+                        <div class="text-xs mt-1">${dayEntries.length ? dayEntries.length + ' registro(s)' : ''}</div>
+                    </div>`;
+                    el.addEventListener('click', () => {
+                        if (!user) { openLoginRequired(); return; }
+                        // show entries of that day
+                        if (!dayEntries.length) {
+                            alert('Sem registros neste dia.');
+                            return;
+                        }
+                        const summary = dayEntries.map(e => `${moodToEmoji(e.mood)} ${e.intensity}/10 — ${e.emotions.join(', ')} — ${new Date(e.date).toLocaleTimeString()}`).join('\\n');
+                        alert('Registros:\\n' + summary);
+                    });
+                    grid.appendChild(el);
+                }
+            }
+            document.getElementById('prev-month').addEventListener('click', () => { calendarDate.setMonth(calendarDate.getMonth() - 1); renderCalendar(); });
+            document.getElementById('next-month').addEventListener('click', () => { calendarDate.setMonth(calendarDate.getMonth() + 1); renderCalendar(); });
+
+            // Filters (basic)
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const f = btn.dataset.filter;
+                    // simple behavior: alert filter active
+                    alert('Filtro ativado: ' + f);
+                });
+            });
+
+            // Insights generation
+            function renderInsights() {
+                const user = getCurrentUser();
+                if (!user) {
+                    document.getElementById('stat-average').textContent = '—';
+                    document.getElementById('stat-common').textContent = '—';
+                    document.getElementById('sparkline').innerHTML = '';
+                    document.getElementById('weekly-patterns').innerHTML = '<li class="text-sm text-neutral">Faça login para ver insights personalizados.</li>';
+                    document.getElementById('triggers').innerHTML = '';
+                    return;
+                }
+                const entries = getEntriesForUser(user.id);
+                if (!entries.length) {
+                    document.getElementById('stat-average').textContent = '—';
+                    document.getElementById('stat-common').textContent = '—';
+                    document.getElementById('sparkline').innerHTML = '';
+                    document.getElementById('weekly-patterns').innerHTML = '<li class="text-sm text-neutral">Ainda não há dados suficientes.</li>';
+                    document.getElementById('triggers').innerHTML = '';
+                    return;
+                }
+                // average mood last 30 entries
+                const recent = entries.slice(0, 30);
+                const avg = (recent.reduce((s, e) => s + e.mood, 0) / recent.length).toFixed(2);
+                document.getElementById('stat-average').textContent = avg;
+                // most common emotion
+                const emotionCounts = {};
+                entries.forEach(e => e.emotions.forEach(em => { emotionCounts[em] = (emotionCounts[em] || 0) + 1; }));
+                const commonEmotion = Object.keys(emotionCounts).sort((a,b)=>emotionCounts[b]-emotionCounts[a])[0] || '—';
+                document.getElementById('stat-common').textContent = commonEmotion || '—';
+                // sparkline
+                const svg = document.getElementById('sparkline');
+                const w = svg.viewBox.baseVal.width || 300;
+                const h = svg.viewBox.baseVal.height || 120;
+                const points = recent.map((e,i) => {
+                    const x = Math.round((i/(recent.length-1 || 1)) * (w-20)) + 10;
+                    const y = Math.round(h - ((e.mood-1)/4) * (h-20) - 10);
+                    return [x,y];
+                });
+                let path = '';
+                if (points.length) {
+                    path = 'M ' + points.map(p => p.join(' ')).join(' L ');
+                }
+                svg.innerHTML = `
+                    <defs>
+                        <linearGradient id="g1" x1="0" x2="0" y1="0" y2="1">
+                            <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.8"/>
+                            <stop offset="100%" stop-color="#a78bfa" stop-opacity="0.2"/>
+                        </linearGradient>
+                    </defs>
+                    <rect width="100%" height="100%" rx="8" fill="url(#g1)" opacity="0.06"></rect>
+                    <path d="${path}" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                `;
+                // weekly patterns (mocked)
+                const weekly = {};
+                entries.forEach(e => {
+                    const day = new Date(e.date).toLocaleString('pt-BR',{ weekday: 'long' });
+                    weekly[day] = (weekly[day] || 0) + 1;
+                });
+                const list = document.getElementById('weekly-patterns');
+                list.innerHTML = Object.keys(weekly).slice(0,7).map(d => `<li>${d}: <span class="font-semibold">${weekly[d]}</span> registro(s)</li>`).join('');
+                // triggers simple correlation by emotions
+                const triggers = document.getElementById('triggers');
+                const sortedEm = Object.keys(emotionCounts).sort((a,b)=>emotionCounts[b]-emotionCounts[a]).slice(0,5);
+                triggers.innerHTML = sortedEm.length ? sortedEm.map(e => `<div class="badge badge-outline">${e} (${emotionCounts[e]})</div>`).join(' ') : '<div class="text-sm text-neutral">Nenhum gatilho identificado ainda.</div>';
+            }
+
+            // Export / Delete data
+            document.getElementById('export-data').addEventListener('click', () => {
+                const user = getCurrentUser();
+                if (!user) { openLoginRequired(); return; }
+                const entries = getEntriesForUser(user.id);
+                const payload = { user, entries };
+                const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `moodflow_${user.email || user.id}.json`;
+                a.click();
+                URL.revokeObjectURL(url);
+            });
+
+            document.getElementById('delete-data').addEventListener('click', () => {
+                const user = getCurrentUser();
+                if (!user) { openLoginRequired(); return; }
+                if (!confirm('Apagar todos os seus dados locais? Esta ação é irreversível.')) return;
+                localStorage.removeItem('moodflow_entries_' + user.id);
+                alert('Dados apagados.');
+                renderEntries();
+            });
+
+            function populateProfile() {
+                const user = getCurrentUser();
+                if (!user) { openLoginRequired(); return; }
+                profileNameLabel.textContent = user.name;
+                profileEmailLabel.textContent = user.email;
+                profileAvatar.textContent = (user.name || 'U').slice(0,1).toUpperCase();
+            }
+
+            function openLoginRequired() {
+                // fallback to login
+                location.hash = '#login';
+                document.getElementById('login-msg').textContent = 'Faça login para continuar.';
+            }
+
+            // CTA main adapt
+            document.getElementById('cta-main').addEventListener('click', (e) => {
+                if (getCurrentUser()) location.hash = '#journal';
+                else location.hash = '#signup';
+            });
+
+            // initial render
+            checkAuthUI();
+            renderEntries();
+        })();
+    </script>
+</body>
+</html>
+</body>
+</html>
